@@ -27,18 +27,18 @@
           </p>
 
           <div class="hero-actions">
-            <a href="https://calendly.com/daniela-tarapues232/30min" class="btn btn-primary">
+            <button @click="goTo('https://calendly.com/daniela-tarapues232/30min')" class="btn btn-primary">
               <span>Agendar Cita</span>
               <i class="pi pi-calendar"></i>
-            </a>
+            </button>
 
             <div class="cv-wrapper">
-              <a :href="cv" target="_blank" class="btn btn-cv-main">
+              <button @click="openCV" class="btn btn-cv-main">
                 <span>Ver CV</span>
-              </a>
-              <a :href="cv" download="CV_Daniela_Tarapues.pdf" class="btn btn-cv-icon" title="Descargar PDF">
+              </button>
+              <button @click="downloadCV" class="btn btn-cv-icon" title="Descargar PDF">
                 <i class="pi pi-download"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -47,30 +47,29 @@
 
     <div class="hero-bg-decoration"></div>
   </section>
-  <FuturisticToast
-    v-model="showToast"
-    :type="toastType"
-    :title="toastTitle"
-    :message="toastMessage"
-    :duration="5000"></FuturisticToast>
+
 </template>
 
-<script scoped>
+<script setup lang="ts">
 import cv from '@/assets/CV_Tarapues_Daniela.pdf';
-import FuturisticToast from '../components/FuturisticToast.vue';
-
-export default {
-  name: 'HeroSectionTest',
-  components: {
-    FuturisticToast
-  },
-  
-  data() {
-    return {
-      cv
-    };
-  }
+const cvUrl = cv;
+const openCV = () => {
+  window.open(cvUrl, '_blank');
 };
+
+const downloadCV = () => {
+  const link = document.createElement('a');
+  link.href = cvUrl;
+  link.download = 'CV_Tarapues_Daniela.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+const goTo = (url: string) => {
+  window.open(url, '_blank');
+};
+
+
 </script>
 
 <style scoped>
@@ -96,7 +95,7 @@ export default {
 /* Capa del Robot (Fondo) */
 .hero-bg-iframe {
   position: absolute;
-  inset: 0; /* Esto resume top/left/right/bottom: 0 */
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -122,15 +121,14 @@ export default {
   pointer-events: none;
 }
 
-/* Restaurar interactividad SOLO donde se necesita */
-.hero-actions a,
-.btn,
+/* Ajustado para incluir button y quitar estilos por defecto */
+.hero-actions button,
 a,
+.btn,
 button {
   pointer-events: auto;
 }
 
-/* Elementos Superiores (Z-Index y Pointer Events) */
 .hero-content,
 .hero-text {
   position: relative;
@@ -146,7 +144,6 @@ button {
   animation: fadeInUp 0.8s ease-out;
 }
 
-/* Tipografía */
 .hero-title {
   font-size: var(--font-size-5xl);
   font-weight: 700;
@@ -177,24 +174,23 @@ button {
   margin-top: 1rem;
 }
 
-/* Botones y Acciones */
 .hero-actions {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
-
-/* Contenedor del grupo CV */
 .cv-wrapper {
   display: flex;
   align-items: center;
   background: var(--card-bg);
-  /* Fondo sutil */
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  padding: 0;
+  /* Asegurar que no haya padding interno que afecte a los botones */
+  overflow: hidden;
 }
 
 .cv-wrapper:hover {
@@ -202,28 +198,23 @@ button {
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
 }
 
-/* Estilo común para ambos lados */
 .btn-cv-main,
 .btn-cv-icon {
   background: transparent;
-  border: none;
   color: var(--text-primary);
   padding: 0.75rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: background 0.2s;
-  text-decoration: none;
   font-weight: 500;
+  height: 100%;
 }
 
-/* Lado del texto: "Ver CV" */
 .btn-cv-main {
-  padding-right: 1rem;
+  padding-right: 1.4rem;
   border-right: 1px solid var(--border-color);
-  /* Línea divisoria suave */
-  border-radius: 7px 0 0 6px;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 
 .btn-cv-main:hover,
@@ -231,14 +222,10 @@ button {
   background: var(--fill-weak);
 }
 
-/* Lado del icono: "Descargar" */
 .btn-cv-icon {
-  padding: 1rem 1rem;
   color: var(--accent-purple);
-  /* Color de acento para el icono */
-  border-radius: 1px 0 0 1px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
-
 
 /* Decoración de Fondo */
 .hero-bg-decoration {
@@ -268,6 +255,7 @@ button {
 }
 
 @media (max-width: 768px) {
+
   /* Forzamos que la sección principal permita bloques independientes */
   .hero {
     padding-top: 80px;
@@ -277,7 +265,7 @@ button {
 
   /* El contenedor principal lo tratamos como bloque */
   .hero-content {
-    display: block; 
+    display: block;
     width: 100%;
     padding: 0;
   }
@@ -287,23 +275,27 @@ button {
     display: block;
     width: 100%;
     text-align: left !important;
-    margin: 0 0 10px 0 !important; /* Espacio debajo del título */
+    margin: 0 0 10px 0 !important;
+    /* Espacio debajo del título */
     font-size: 2.4rem;
     line-height: 1.2;
   }
 
   /* --- CONTENEDOR DE LA PARTE INFERIOR (TEXTO + ROBOT) --- */
   .hero-text {
-    display: block; /* Cambiamos a bloque para posicionar manualmente */
+    display: block;
+    /* Cambiamos a bloque para posicionar manualmente */
     position: relative;
     width: 100%;
-    min-height: 300px; /* Espacio mínimo para que quepan los botones */
+    min-height: 300px;
+    /* Espacio mínimo para que quepan los botones */
   }
 
   /* DESCRIPCIÓN: Forzamos alineación a la izquierda y ancho limitado */
   .hero-description {
     text-align: left !important;
-    width: 65%; /* Deja el 35% de la derecha para el robot */
+    width: 65%;
+    /* Deja el 35% de la derecha para el robot */
     margin-left: 0 !important;
     margin-right: auto;
     font-size: 1rem;
@@ -317,52 +309,60 @@ button {
     flex-direction: column;
     align-items: flex-start !important;
     gap: 12px;
-    width: 65%; /* Misma anchura que la descripción */
+    width: 65%;
+    /* Misma anchura que la descripción */
   }
 
-  .cv-wrapper{
+  .cv-wrapper {
     border: none;
   }
 
-  .btn-primary, 
+  .btn-primary,
   .cv-wrapper {
-    width: 160px; /* Tamaño controlado */
+    width: 160px;
+    /* Tamaño controlado */
     margin-left: 0;
   }
 
   .btn-cv-main {
-   width: 8rem;
-   padding: 0.625rem 1.25rem;
+    width: 8rem;
+    padding: 0.625rem 1.25rem;
   }
 
   /* --- EL ROBOT: PEQUEÑO Y A LA DERECHA --- */
- .hero-bg-iframe {
+  .hero-bg-iframe {
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
     z-index: 5;
-    overflow: visible; /* Permitir que el robot se asome si es necesario */
+    overflow: visible;
+    /* Permitir que el robot se asome si es necesario */
   }
 
-.hero-bg-iframe iframe {
-    position: absolute;/* Aumentamos el lienzo del iframe para que el robot no se corte dentro */
-    width: 700px;  
-    height: 600px; /* Lo posicionamos */
-    right: -18px;  /* Ajusta esto para pegarlo más o menos al borde */
-    top: 18%;      /* Ajuste de altura según tu preferencia */
+  .hero-bg-iframe iframe {
+    position: absolute;
+    /* Aumentamos el lienzo del iframe para que el robot no se corte dentro */
+    width: 700px;
+    height: 600px;
+    /* Lo posicionamos */
+    right: -18px;
+    /* Ajusta esto para pegarlo más o menos al borde */
+    top: 18%;
+    /* Ajuste de altura según tu preferencia */
     left: auto;
-    border: none; /* La escala ahora es más pequeña y desde el centro para no cortarlo */
-    transform: scale(0.45); 
-    transform-origin: center right; 
+    border: none;
+    /* La escala ahora es más pequeña y desde el centro para no cortarlo */
+    transform: scale(0.45);
+    transform-origin: center right;
     mix-blend-mode: lighten;
     pointer-events: auto;
   }
 }
 
 @media (max-width:700px) {
-    .hero-bg-iframe iframe {
+  .hero-bg-iframe iframe {
     top: 12%;
     right: -6%;
   }
@@ -374,21 +374,21 @@ button {
 }
 
 @media (max-width:570px) {
-    .hero-bg-iframe iframe {
+  .hero-bg-iframe iframe {
     top: 15%;
     right: -11%;
   }
 }
 
 @media (max-width:476px) {
-    .hero-bg-iframe iframe {
+  .hero-bg-iframe iframe {
     top: 14%;
     right: -13%;
   }
 }
 
 @media (max-width:470px) {
-    .hero-bg-iframe iframe {
+  .hero-bg-iframe iframe {
     top: 20%;
   }
 }
@@ -397,7 +397,8 @@ button {
 
   /* 1. Ajuste del iframe para que no interfiera visualmente arriba */
   .hero-bg-iframe iframe {
-    top: 16%; /* Ajuste fino de la posición del robot */
+    top: 16%;
+    /* Ajuste fino de la posición del robot */
     transform: scale(0.35);
   }
 
@@ -405,12 +406,13 @@ button {
   .hero-text {
     display: flex;
     flex-direction: column;
-    min-height: auto; /* Quitamos el min-height fijo para que crezca con el contenido */
+    min-height: auto;
+    /* Quitamos el min-height fijo para que crezca con el contenido */
   }
 
   /* 3. La descripción mantiene su ancho si quieres que el robot se vea a su lado */
   .hero-description {
-    width: 65%; 
+    width: 65%;
     margin-bottom: 2rem;
   }
 
@@ -418,22 +420,26 @@ button {
   .hero-actions {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Ahora ocupa todo el ancho de la pantalla */
+    width: 100%;
+    /* Ahora ocupa todo el ancho de la pantalla */
     gap: 15px;
-    align-items: stretch !important; /* Estira los botones al ancho total */
+    align-items: stretch !important;
+    /* Estira los botones al ancho total */
     pointer-events: auto;
   }
 
   /* 5. Estilizamos los botones individuales y el wrapper del CV */
-  .btn-primary, 
+  .btn-primary,
   .cv-wrapper {
-    width: 100% !important; /* Ocupa todo el contenedor */
+    width: 100% !important;
+    /* Ocupa todo el contenedor */
     justify-content: center;
     box-sizing: border-box;
   }
 
   .btn-cv-main {
-    flex-grow: 1; /* Hace que el texto del CV ocupe el espacio disponible */
+    flex-grow: 1;
+    /* Hace que el texto del CV ocupe el espacio disponible */
     justify-content: center;
   }
 }
@@ -443,12 +449,14 @@ button {
   .hero-title {
     font-size: 1.6rem;
   }
+
   .hero-bg-iframe iframe {
     width: 600px;
     height: 600px;
     right: -20px;
     top: 10%;
-    transform: scale(0.3); /* Aún más pequeño en pantallas mini */
+    transform: scale(0.3);
+    /* Aún más pequeño en pantallas mini */
   }
 }
 
@@ -458,9 +466,8 @@ button {
     height: 600px;
     right: -20px;
     top: 15%;
-    transform: scale(0.3); /* Aún más pequeño en pantallas mini */
+    transform: scale(0.3);
+    /* Aún más pequeño en pantallas mini */
   }
 }
-
-
 </style>
