@@ -1,0 +1,157 @@
+:root {
+  /* Typography */
+  --font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --container-padding: 1rem;
+  --border-radius: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Theme (Default) */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --primary-bg: #000000;
+  --secondary-bg: #1a1a2e;
+  --card-bg: rgba(24, 24, 27, 0.8);
+  --hero-bg: radial-gradient(109.71% 109.71% at 50.04% -9.71%, #3D1476 0%, #17094A 32.69%, #000 100%);
+
+    /* Overlays */
+  --overlay-inverse: rgba(255, 255, 255, 0.6);
+  --overlay: rgba(0, 0, 0, 0.5);
+
+  /* Colors */
+  --accent-purple: #6366f1;
+  --accent-blue: #3b82f6;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-strong: #DBE1FF;
+  --text-inverse-strong: #2b2e47;
+
+  /* Borders */
+  --border-color: #27272a;
+  --stroke-weak: rgba(219, 225, 255, 0.10);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  --gradient-header: linear-gradient(90deg, rgba(171, 176, 186, 0.00) 0%, rgba(67, 89, 135, 0.40) 47.12%, rgba(171, 176, 186, 0.00) 100%);
+--gradient-menu: linear-gradient(180deg, rgba(11, 14, 19, 0.95) 0%, rgba(25, 28, 65, 0.90) 100%);
+ 
+  --gradient-text: linear-gradient(90deg, #ACA7FF 72.47%, #7172E3 88.82%);
+--gradient-icons: linear-gradient(90deg, #814ACF 0%, #ACA7FF 100%);
+
+
+  /* Brand Colors */
+  --fill-strong: #DBE1FF;
+  --fill-weak: rgba(219, 225, 255, 0.05);
+  --fill-inverse-strong: #1E1A91;
+  --fill-brand-strong: #ACA7FF;
+  --fill-brand-inverse-strong: #1E1A91;
+  --fill-glass: rgba(0, 0, 0, 0.40);
+
+
+  /* Hero specific variables */
+  --floating-element-bg: rgba(99, 102, 241, 0.1);
+  --floating-element-border: rgba(99, 102, 241, 0.2);
+  --hero-decoration-bg: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+
+  --transparent-40:rgba(69, 67, 128, 0.4);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  /* Backgrounds */
+  --primary-bg: #DBE1FF;
+  --secondary-bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --hero-bg: radial-gradient(109.71% 109.71% at 50.04% -9.71%, #A4A1FF 0%, #B2B6FF 32.69%, #DBE1FF 100%);
+
+  /* Overlays */
+  --overlay-inverse: rgba(0, 0, 0, 0.5);
+  --overlay: rgba(255, 255, 255, 0.6);
+
+
+  /* Colors */
+  --accent-purple: #4338ca;
+  --accent-blue: #1d4ed8;
+
+  /* Text Colors */
+  --text-primary: #1f2937;
+  --text-secondary: #4f5768;
+  --text-muted: #9ca3af;
+  --text-strong: #2b2e47;
+  --text-inverse-strong: #DBE1FF;
+
+  /* Borders */
+  --border-color: #e5e7eb;
+  --stroke-weak: rgba(43, 46, 71, 0.10);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #4338ca 0%, #7c3aed 100%);
+  --gradient-secondary: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
+  --gradient-header: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.40) 51.66%, rgba(255, 255, 255, 0.00) 100%);
+--gradient-menu: linear-gradient(180deg, rgba(208, 208, 238, 0.8) 0%, rgba(238, 240, 255, 0.8) 100%);
+
+  --gradient-text: linear-gradient(90deg, #19217B 71.78%, #3A35D0 88.75%);
+--gradient-icons: linear-gradient(90deg, #2A1AB5 0%, #6228FF 100%);
+
+
+  /* Brand Colors */
+  --fill-strong: #1E1A91;
+  --fill-weak: rgba(236, 238, 255, 0.05);
+  --fill-inverse-strong: #DBE1FF;
+  --fill-brand-strong: #1E1A91;
+  --fill-brand-inverse-strong: #ACA7FF;
+  --fill-glass: rgba(215, 215, 255, 0.40);
+
+    --transparent-40:rgba(255, 255, 255, 0.40);
+
+
+
+  /* Light theme hero variables */
+  --floating-element-bg: rgba(67, 56, 202, 0.08);
+  --floating-element-border: rgba(67, 56, 202, 0.15);
+  --hero-decoration-bg: radial-gradient(circle, rgba(67, 56, 202, 0.08) 0%, transparent 70%);
+
+  /* Light theme shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}

@@ -1,0 +1,31 @@
+<template>
+  <MainLayout>
+    <HeroSection />
+    <TechStack />
+    <ExperienceTimeline />  
+  </MainLayout>
+</template>
+
+<script>
+import MainLayout from './layouts/MainLayout.vue'
+import HeroSection from './sections/HeroSection.vue'
+import TechStack from './sections/TechStack.vue'
+import ExperienceTimeline from './sections/ExperienceTimeline.vue'
+
+export default {
+  name: 'App',
+  components: {
+    MainLayout,
+    HeroSection,
+    TechStack,
+    ExperienceTimeline
+  }
+}
+</script>
+
+<style>
+/* Mantén tus imports de estilos globales aquí */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import './styles/variables.css';
+@import './styles/global.css';
+</style>
