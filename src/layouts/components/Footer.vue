@@ -122,18 +122,20 @@ import FuturisticToast from '@/components/FuturisticToast.vue'; // Ajusta la rut
 import { useDark } from '@vueuse/core'
 import ContactForm from '@/components/ContactForm.vue';
 import { useContact } from '../../common/composables/useContact';
+import type { ContactFormData, ContactFormInstance } from '@/common/types';
 
 
 // Lógica extraída
 const { sendEmail, isSubmitting, toast } = useContact();
 
 // EN EL SCRIPT DE THEFOOTER.VUE
-const contactFormRef = ref<any>(null); // El nombre debe ser igual al del template
-
-const handleFormSubmit = async (formData: any) => {
+const contactFormRef = ref<ContactFormInstance | null>(null);
+  
+const handleFormSubmit = async (formData: ContactFormData) => {
   const success = await sendEmail(formData);
   if (success) {
-    contactFormRef.value?.resetForm(); // Ahora sí limpiará el formulario
+    // Ya no marcará error en resetForm()
+    contactFormRef.value?.resetForm(); 
   }
 };
 // useDark es reactivo globalmente. Si el Header cambia el tema, 

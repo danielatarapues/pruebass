@@ -1,24 +1,32 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, type Component } from 'vue'
 import { Menu, X, Moon, Sun } from 'lucide-vue-next'
 import { useDark } from '@vueuse/core'
 
-// Importaciones locales
 import BaseToggle from '@/common/components/BaseToggle.vue'
 import { useNavigation } from '@/common/composables/useNavigation'
 import LogoWhite from '@/assets/logowhite.svg'
 import LogoDark from '@/assets/logodark.svg'
 
-const sectionOrder = ['inicio', 'tecnologías', 'experiencia', 'footer']
-const navLinks = computed(() => sectionOrder.filter(s => s !== 'footer'))
+const ThemeIcon = computed<Component>(() => (isDark.value ? Moon : Sun));
 
-// Lógica de Tema
+// Definición de tipos para las secciones
+type SectionName = 'inicio' | 'tecnologías' | 'experiencia' | 'footer';
+
+const sectionOrder: SectionName[] = ['inicio', 'tecnologías', 'experiencia', 'footer']
+
+const navLinks = computed<SectionName[]>(() => 
+  sectionOrder.filter((s): s is SectionName => s !== 'footer')
+)
+
 const isDark = useDark({
-  selector: 'html', attribute: 'data-theme', storageKey: 'theme',
-  valueDark: 'dark', valueLight: 'light',
+  selector: 'html', 
+  attribute: 'data-theme', 
+  storageKey: 'theme',
+  valueDark: 'dark', 
+  valueLight: 'light',
 })
 
-// Lógica de Navegación extraída
 const {
   activeSection,
   hoveredSection,
@@ -28,19 +36,23 @@ const {
   setHover
 } = useNavigation(sectionOrder)
 
-const getLinkClasses = (section) => {
-  // La línea se activa si es la sección real O si el mouse está encima
+// Tipado del parámetro section y del objeto de retorno
+const getLinkClasses = (section: SectionName): Record<string, boolean> => {
   const isCurrentActive = activeSection.value === section
   const isCurrentlyHovered = hoveredSection.value === section
 
   return {
     'nav-link--active': isCurrentActive || isCurrentlyHovered,
-    'is-before': sectionOrder.indexOf(activeSection.value) > sectionOrder.indexOf(section),
-    'is-after': sectionOrder.indexOf(activeSection.value) < sectionOrder.indexOf(section)
+    'is-before': sectionOrder.indexOf(activeSection.value as SectionName) > sectionOrder.indexOf(section),
+    'is-after': sectionOrder.indexOf(activeSection.value as SectionName) < sectionOrder.indexOf(section)
   }
 }
 
-const handleLinkClick = (s) => { updateNavState(s); isMenuOpen.value = false }
+// Tipado del parámetro s
+const handleLinkClick = (s: SectionName): void => { 
+  updateNavState(s)
+  isMenuOpen.value = false 
+}
 </script>
 
 <template>
@@ -62,21 +74,21 @@ const handleLinkClick = (s) => { updateNavState(s); isMenuOpen.value = false }
           <li class="nav-item-mobile-only">
             <div class="theme-switch-wrapper">
               <span>Modo {{ isDark ? 'Oscuro' : 'Claro' }}</span>
-              <BaseToggle v-model="isDark">
-                <template #icon>
-                  <component :is="isDark ? Moon : Sun" size="14" />
-                </template>
-              </BaseToggle>
+           <BaseToggle v-model="isDark" class="desktop-only">
+  <template #icon>
+    <component :is="ThemeIcon" :size="14" />
+  </template>
+</BaseToggle>
             </div>
           </li>
         </ul>
 
         <div class="nav-actions">
-          <BaseToggle v-model="isDark" class="desktop-only">
-            <template #icon>
-              <component :is="isDark ? Moon : Sun" size="14" />
-            </template>
-          </BaseToggle>
+         <BaseToggle v-model="isDark" class="desktop-only">
+  <template #icon>
+    <component :is="ThemeIcon" :size="14" />
+  </template>
+</BaseToggle>
 
           <button class="mobile-menu-btn" @click.stop="isMenuOpen = !isMenuOpen">
             <component :is="isMenuOpen ? X : Menu" :size="24" />

@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import type { ContactFormData } from '../types';
 
 export function useContact() {
   const isSubmitting = ref(false);
@@ -9,7 +10,7 @@ export function useContact() {
     message: ''
   });
 
-  const sendEmail = async (formData: any) => {
+  const sendEmail = async (formData: ContactFormData) => {
     isSubmitting.value = true;
 
     // 1. Creamos el controlador para abortar la petición

@@ -49,11 +49,11 @@ const handleSubmit = () => {
     emit('submit', { ...form.value });
 };
 
-// Método para limpiar el form que el padre puede llamar
 const resetForm = () => {
     form.value = { name: '', email: '', subject: '', message: '' };
 };
 
+// Método visible para el ref del padre
 defineExpose({ resetForm });
 </script>
 

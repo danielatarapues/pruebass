@@ -14,15 +14,25 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  modelValue: Boolean, // Usamos v-model estándar de Vue 3
-  ariaLabel: { type: String, default: 'Cambiar estado' }
-})
-defineEmits(['update:modelValue'])
+<script setup lang="ts">
+// Usamos una interfaz para definir las props en TypeScript
+interface Props {
+  modelValue: boolean;
+  ariaLabel?: string;
+}
+
+// Definimos las props con valores por defecto
+withDefaults(defineProps<Props>(), {
+  ariaLabel: 'Cambiar estado'
+});
+
+// Definimos los emits tipados
+defineEmits<{
+  (e: 'update:modelValue', value: boolean): void
+}>();
 </script>
 
-<style scoped>
+<style scoped >
 .theme-switch { position: relative; width: 56px; height: 28px; cursor: pointer; }
 .switch-track { position: absolute; inset: 0; background: var(--fill-strong); border-radius: 50px; transition: background 0.4s; }
 .switch-track--active { background: var(--fill-strong); } 
