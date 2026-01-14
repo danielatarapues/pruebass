@@ -1,4 +1,3 @@
-// src/constants/technologies.ts
 import { 
   PhAngularLogo, PhAtom, PhGithubLogo, PhGlobeSimple,
   PhFileVue, PhFigmaLogo, PhDeviceMobile, PhAppWindow,

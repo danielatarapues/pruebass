@@ -10,7 +10,7 @@
       <div class="testimonials-header">
         <h2 class="section-title text-center">Testimonios</h2>
         <p class="section-subtitle text-center">
-          Lo que dicen nuestros clientes sobre trabajar conmigo
+          Lo que dicen mis clientes sobre trabajar conmigo
         </p>
       </div>
 

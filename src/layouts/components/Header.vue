@@ -15,15 +15,15 @@ type SectionName = 'inicio' | 'tecnologías' | 'experiencia' | 'footer';
 
 const sectionOrder: SectionName[] = ['inicio', 'tecnologías', 'experiencia', 'footer']
 
-const navLinks = computed<SectionName[]>(() => 
+const navLinks = computed<SectionName[]>(() =>
   sectionOrder.filter((s): s is SectionName => s !== 'footer')
 )
 
 const isDark = useDark({
-  selector: 'html', 
-  attribute: 'data-theme', 
+  selector: 'html',
+  attribute: 'data-theme',
   storageKey: 'theme',
-  valueDark: 'dark', 
+  valueDark: 'dark',
   valueLight: 'light',
 })
 
@@ -49,14 +49,14 @@ const getLinkClasses = (section: SectionName): Record<string, boolean> => {
 }
 
 // Tipado del parámetro s
-const handleLinkClick = (s: SectionName): void => { 
+const handleLinkClick = (s: SectionName): void => {
   updateNavState(s)
-  isMenuOpen.value = false 
+  isMenuOpen.value = false
 }
 </script>
 
 <template>
- <header class="header" :class="{ 'header--menu-open': isMenuOpen }">
+  <header class="header" :class="{ 'header--menu-open': isMenuOpen }">
     <nav class="nav">
       <div class="container nav-content">
         <div class="logo">
@@ -74,21 +74,21 @@ const handleLinkClick = (s: SectionName): void => {
           <li class="nav-item-mobile-only">
             <div class="theme-switch-wrapper">
               <span>Modo {{ isDark ? 'Oscuro' : 'Claro' }}</span>
-           <BaseToggle v-model="isDark" class="desktop-only">
-  <template #icon>
-    <component :is="ThemeIcon" :size="14" />
-  </template>
-</BaseToggle>
+              <BaseToggle v-model="isDark" >
+                <template #icon>
+                  <component :is="ThemeIcon" :size="14" />
+                </template>
+              </BaseToggle>
             </div>
           </li>
         </ul>
 
         <div class="nav-actions">
-         <BaseToggle v-model="isDark" class="desktop-only">
-  <template #icon>
-    <component :is="ThemeIcon" :size="14" />
-  </template>
-</BaseToggle>
+          <BaseToggle v-model="isDark" class="desktop-only">
+            <template #icon>
+              <component :is="ThemeIcon" :size="14" />
+            </template>
+          </BaseToggle>
 
           <button class="mobile-menu-btn" @click.stop="isMenuOpen = !isMenuOpen">
             <component :is="isMenuOpen ? X : Menu" :size="24" />
@@ -256,7 +256,7 @@ const handleLinkClick = (s: SectionName): void => {
 /* --- 5. RESPONSIVE (MOBILE) --- */
 @media (max-width: 768px) {
 
-  .header{
+  .header {
     border-radius: 10px;
   }
 
@@ -277,13 +277,13 @@ const handleLinkClick = (s: SectionName): void => {
     display: flex;
   }
 
-  .header--menu-open{
-  border-radius: 10px 10px 0 0;
-}
+  .header--menu-open {
+    border-radius: 10px 10px 0 0;
+  }
 
-.nav-links {
+  .nav-links {
     position: fixed;
-    top: 78px; 
+    top: 78px;
     left: -1px;
     right: -1px;
     flex-direction: column;
@@ -293,19 +293,21 @@ const handleLinkClick = (s: SectionName): void => {
     /* Aumentamos la opacidad del fondo para que las letras de atrás se mezclen más */
     /* Usamos un color base sólido antes del gradiente para asegurar cobertura */
     background: var(--gradient-menu);
-    
+
     /* El punto dulce del blur suele ser entre 20px y 40px con saturación */
     backdrop-filter: blur(30px) saturate(150%);
     -webkit-backdrop-filter: blur(30px) saturate(150%);
-    
+
     border: 1px solid var(--stroke-weak);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Sombra más fuerte para dar profundidad */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    /* Sombra más fuerte para dar profundidad */
 
     /* Animación y control */
     z-index: 1001;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-10px); /* Ligero desplazamiento para la animación */
+    transform: translateY(-10px);
+    /* Ligero desplazamiento para la animación */
     transform-origin: top right;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
@@ -316,11 +318,12 @@ const handleLinkClick = (s: SectionName): void => {
     z-index: 1001;
   }
 
-.nav-links--open {
+  .nav-links--open {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto; /* Reactiva clics */
+    pointer-events: auto;
+    /* Reactiva clics */
   }
 
 
