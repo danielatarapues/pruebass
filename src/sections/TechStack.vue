@@ -12,7 +12,8 @@
       <div class="fade-edge right"></div>
 
       <div class="carousel-track" ref="carouselTrack" @mouseenter="pauseCarousel" @mouseleave="resumeCarousel">
-        <div v-for="(tech, index) in [...technologies, ...technologies]" :key="index" class="tech-card">
+        <div v-for="(tech, index) in [...technologies, ...technologies]" :key="`${tech.name}-${index}`"
+          class="tech-card">
           <span class="tech-category">{{ tech.category }}</span>
 
           <div class="tech-icon">
@@ -30,31 +31,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import {
-  PhAngularLogo, PhAtom, PhGithubLogo, PhGlobeSimple,
-  PhFileVue, PhFigmaLogo, PhDeviceMobile, PhAppWindow,
-  PhCode, PhMagicWand, PhPaintBrushBroad
-} from "@phosphor-icons/vue"
 import GradientIcon from "@/components/GradientIcon.vue"
-import type { Technology } from "@/common/types"
+import { TECHNOLOGIES_LIST } from "@/constants/technologies"
+
+const technologies = TECHNOLOGIES_LIST
 
 // 1. Tipamos la referencia del carrusel
 const carouselTrack = ref<HTMLDivElement | null>(null)
 
-
-const technologies: Technology[] = [
-  { name: "React", category: "Frontend", description: "Interfaces interactivas.", icon: PhAtom },
-  { name: "Next.js", category: "Frontend", description: "Framework SSR y estático.", icon: PhAppWindow },
-  { name: "Angular", category: "Frontend", description: "Aplicaciones escalables.", icon: PhAngularLogo },
-  { name: "Vue.js", category: "Frontend", description: "Framework progresivo.", icon: PhFileVue },
-  { name: "Tailwind CSS", category: "Frontend", description: "Estilizado moderno.", icon: PhPaintBrushBroad },
-  { name: "React Native", category: "Mobile", description: "Apps nativas iOS/Android.", icon: PhDeviceMobile },
-  { name: "Figma", category: "Design", description: "Prototipado y sistemas de diseño.", icon: PhFigmaLogo },
-  { name: "AI Integration", category: "Backend & AI", description: "OpenAI API", icon: PhMagicWand },
-  { name: "Python & SQL", category: "Backend & AI", description: "Lógica y manejo de datos.", icon: PhCode },
-  { name: "WordPress", category: "Tools", description: "Gestión de contenidos.", icon: PhGlobeSimple },
-  { name: "GitHub", category: "Tools", description: "Control de versiones Git.", icon: PhGithubLogo }
-]
 
 const pauseCarousel = () => {
   // TypeScript ahora sabe que carouselTrack.value puede tener .style

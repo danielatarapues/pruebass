@@ -1,3 +1,5 @@
+import type { Component } from "vue";
+
 // Define la estructura del formulario de contacto
 export interface ContactFormData {
   name: string;
@@ -33,5 +35,5 @@ export interface Technology {
   name: string;
   category: string;
   description: string;
-  icon: any; 
+  icon: Component; 
 }
