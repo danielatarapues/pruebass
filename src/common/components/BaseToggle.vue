@@ -38,7 +38,7 @@ defineEmits<{
 .switch-track--active { background: var(--fill-strong); } 
 .switch-thumb { 
   position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; 
-  background: var(--fill-inverse-strong); border-radius: 50%;
+  background: var(--fill-strong-inverse); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }

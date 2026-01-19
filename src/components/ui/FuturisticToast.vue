@@ -94,23 +94,18 @@ watch(() => props.modelValue, (newVal) => {
 
 .futuristic-toast {
     position: fixed;
-    /* Centrado absoluto */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* Esto lo mantiene al centro exacto */
 
     width: 380px;
     max-width: 90vw;
-    /* Asegura que no se salga en móviles */
     z-index: 9999;
-    /* Aumentado para estar sobre todo */
     display: flex;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--stroke-weak);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-weak);
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    /* Sombra más profunda para destacar */
+    box-shadow: var(--shadow-xl);
 }
 
 .toast-glass {
@@ -123,7 +118,7 @@ watch(() => props.modelValue, (newVal) => {
 
 .toast-accent {
     width: 4px;
-    background: var(--accent-purple);
+    background: var(--color-accent-purple);
 }
 
 .toast-content {
@@ -134,17 +129,17 @@ watch(() => props.modelValue, (newVal) => {
 }
 
 .toast-icon-wrapper {
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
     display: flex;
     align-items: flex-start;
 }
 
 .success .toast-icon-wrapper {
-    color: #90ffda;
+    color: var(--success-icon);
 }
 
 .error .toast-icon-wrapper {
-    color: #f33e3e;
+    color: var(--error-color);
 }
 
 .toast-body {
@@ -173,9 +168,9 @@ watch(() => props.modelValue, (newVal) => {
 .action-link {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
-    background: var(--fill-inverse-strong);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
+    background: var(--fill-brand-inverse);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius-lg);
     color: var(--text-strong);
     text-decoration: none;
     display: flex;
@@ -187,7 +182,7 @@ watch(() => props.modelValue, (newVal) => {
 .action-link:hover {
     background: var(--fill-brand-strong);
     border-color: var(--fill-brand-strong);
-    color: var(--text-inverse-strong);
+    color: var(--text-inverse);
     transform: translateY(-2px);
 }
 
@@ -218,7 +213,6 @@ watch(() => props.modelValue, (newVal) => {
 .toast-enter-from {
     opacity: 0;
     transform: translate(-50%, -40%) scale(0.9);
-    /* Aparece un poco más abajo y escala */
 }
 
 .toast-leave-to {
@@ -229,7 +223,6 @@ watch(() => props.modelValue, (newVal) => {
 @media (max-width: 480px) {
     .futuristic-toast {
         width: 90%;
-        /* Mantiene el centrado incluso en móviles */
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);

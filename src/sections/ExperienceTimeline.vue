@@ -49,7 +49,7 @@ const experiences = EXPERIENCES_DATA
 <style scoped>
 .experience-timeline {
   padding: var(--space-4xl) 0;
-  background: var(--primary-bg);
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -63,8 +63,8 @@ const experiences = EXPERIENCES_DATA
   height: 100%;
   /* Color de stroke débil para que cambie según el tema */
   background-image: 
-    linear-gradient(to right, var(--stroke-weak) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--stroke-weak) 1px, transparent 1px);
+    linear-gradient(to right, var(--border-weak) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-weak) 1px, transparent 1px);
   background-size: 40px 40px;
   /* El mask crea un desvanecimiento hacia los bordes para que no se vea cortado */
   mask-image: radial-gradient(circle at center, black, transparent 90%);
@@ -97,7 +97,7 @@ const experiences = EXPERIENCES_DATA
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--stroke-weak);
+  background: var(--border-weak);
   transform: translateX(-50%);
 }
 
@@ -109,7 +109,7 @@ const experiences = EXPERIENCES_DATA
   transform: translateX(-50%);
   width: 10px;
   height: 10px;
-  background: var(--accent-purple);
+  background: var(--color-accent-purple);
   filter: blur(5px);
   border-radius: 50%;
 }
@@ -141,14 +141,14 @@ const experiences = EXPERIENCES_DATA
   top: 20px;
   width: 20px;
   height: 20px;
-  background: var(--primary-bg);
-  border: 2px solid var(--accent-purple);
+  background: var(--bg-primary);
+  border: 2px solid var(--color-accent-purple);
   border-radius: 50%;
   z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px var(--accent-purple);
+  box-shadow: 0 0 15px var(--color-accent-purple);
 }
 
 .item-right .timeline-dot { left: -11px; }
@@ -165,25 +165,25 @@ const experiences = EXPERIENCES_DATA
 .timeline-card {
   position: relative;
   padding: var(--space-xl);
-  background: var(--transparent-40);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-lg);
+  background: var(--fill-transparent);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
-  transition: var(--transition-normal);
+  transition: var(--transition-base);
   width: 100%;
 }
 
 .timeline-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-purple);
+  border-color: var(--color-accent-purple);
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
 }
 
 .job-date {
   display: inline-block;
   font-size: var(--font-size-xs);
-  font-weight: 700;
-  color: var(--accent-purple);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-purple);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: var(--space-sm);
@@ -201,7 +201,7 @@ const experiences = EXPERIENCES_DATA
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin-bottom: var(--space-md);
 }
 
@@ -220,13 +220,13 @@ const experiences = EXPERIENCES_DATA
 
 .item-right .job-details li::before {
   content: '▹';
-  color: var(--accent-purple);
+  color: var(--color-accent-purple);
   margin-right: 8px;
 }
 
 .item-left .job-details li::after {
   content: '◃';
-  color: var(--accent-purple);
+  color: var(--color-accent-purple);
   margin-left: 8px;
 }
 
@@ -249,7 +249,7 @@ const experiences = EXPERIENCES_DATA
   .item-left .job-details li::after { content: none; }
   .item-left .job-details li::before {
     content: '▹';
-    color: var(--accent-purple);
+    color: var(--color-accent-purple);
     margin-right: 8px;
   }
 }

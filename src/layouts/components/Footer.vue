@@ -76,18 +76,14 @@
           </div>
         </div>
 
-       <div class="contact-form-section">
+        <div class="contact-form-section">
           <h3 class="contact-form-title">¿Listo para empezar?</h3>
           <p class="contact-form-subtitle">
 
             Cuéntame sobre tu idea y trabajemos juntos para hacerla realidad.
 
           </p>
-          <ContactForm 
-            ref="contactFormRef"
-            :loading="isSubmitting" 
-            @submit="handleFormSubmit" 
-          />
+          <ContactForm ref="contactFormRef" :loading="isSubmitting" @submit="handleFormSubmit" />
         </div>
       </div>
 
@@ -116,30 +112,27 @@
 import { computed, ref } from 'vue'
 
 // Logos
-import LogoWhite from '/src/assets/logowhite.svg'
-import LogoDark from '/src/assets/logodark.svg'
-import FuturisticToast from '@/components/FuturisticToast.vue'; // Ajusta la ruta
+import LogoWhite from '@/assets/logos/logowhite.svg'
+import LogoDark from '@/assets/logos/logodark.svg'
+import FuturisticToast from '@/components/ui/FuturisticToast.vue';
 import { useDark } from '@vueuse/core'
-import ContactForm from '@/components/ContactForm.vue';
-import { useContact } from '../../common/composables/useContact';
+import ContactForm from '@/components/forms/ContactForm.vue';
+import { useContact } from '@/common/composables/useContact';
 import type { ContactFormData, ContactFormInstance } from '@/common/types';
 
 
-// Lógica extraída
 const { sendEmail, isSubmitting, toast } = useContact();
 
-// EN EL SCRIPT DE THEFOOTER.VUE
 const contactFormRef = ref<ContactFormInstance | null>(null);
-  
+
 const handleFormSubmit = async (formData: ContactFormData) => {
   const success = await sendEmail(formData);
   if (success) {
-    // Ya no marcará error en resetForm()
-    contactFormRef.value?.resetForm(); 
+    contactFormRef.value?.resetForm();
   }
 };
 // useDark es reactivo globalmente. Si el Header cambia el tema, 
-// isDark aquí se actualizará automáticamente.
+// isDark se actualizará automáticamente.
 const isDark = useDark({
   selector: 'html',
   attribute: 'data-theme',
@@ -149,15 +142,14 @@ const isDark = useDark({
 })
 
 
-
 const currentYear = computed(() => new Date().getFullYear())
 
 </script>
 
 <style scoped>
 .footer {
-  background: var(--secondary-bg);
-  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-base);
   position: relative;
   overflow: hidden;
   padding-bottom: 0.6rem;
@@ -187,7 +179,7 @@ const currentYear = computed(() => new Date().getFullYear())
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-base);
 }
 
 .footer-description {
@@ -204,20 +196,20 @@ const currentYear = computed(() => new Date().getFullYear())
 .social-link {
   width: 44px;
   height: 44px;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
-  transition: all var(--transition-normal);
+  transition: all var(--transition-base);
   text-decoration: none;
 }
 
 .social-link:hover {
-  background: var(--accent-purple);
-  border-color: var(--accent-purple);
+  background: var(--color-accent-purple);
+  border-color: var(--color-accent-purple);
   color: white;
   transform: translateY(-2px);
 }
@@ -252,12 +244,12 @@ const currentYear = computed(() => new Date().getFullYear())
 .footer-link {
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color var(--transition-normal);
+  transition: color var(--transition-base);
   font-size: var(--font-size-sm);
 }
 
 .footer-link:hover {
-  color: var(--accent-purple);
+  color: var(--color-accent-purple);
 }
 
 .contact-item {
@@ -275,9 +267,9 @@ const currentYear = computed(() => new Date().getFullYear())
 }
 
 .contact-form-section {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-xl);
   padding: var(--space-3xl);
   backdrop-filter: blur(10px);
 }
@@ -286,7 +278,7 @@ const currentYear = computed(() => new Date().getFullYear())
   font-size: var(--font-size-2xl);
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-2xs);
 }
 
 .contact-form-subtitle {
@@ -295,11 +287,10 @@ const currentYear = computed(() => new Date().getFullYear())
   line-height: 1.6;
 }
 
-
 .footer-bottom {
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-base);
   padding-top: var(--space-xl);
-  padding-bottom: var(--space-md);
+  padding-bottom: var(--space-base);
 }
 
 .footer-bottom-content {
@@ -311,42 +302,6 @@ const currentYear = computed(() => new Date().getFullYear())
 .copyright {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
-}
-
-.footer-bottom-links {
-  display: flex;
-  gap: var(--space-lg);
-}
-
-.footer-bottom-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: var(--font-size-sm);
-  transition: color var(--transition-normal);
-}
-
-.footer-bottom-link:hover {
-  color: var(--accent-purple);
-}
-
-.footer-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.footer-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(180deg,
-      rgba(99, 102, 241, 0.05) 0%,
-      transparent 100%);
 }
 
 .footer-tech-stack {
@@ -363,8 +318,8 @@ const currentYear = computed(() => new Date().getFullYear())
 }
 
 .tech-tag {
-  background: var(--primary-bg);
-  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-base);
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -388,6 +343,8 @@ const currentYear = computed(() => new Date().getFullYear())
   }
 }
 
+/* --- RESPONSIVE --- */
+
 @media (max-width: 768px) {
   .footer-content {
     padding: var(--space-3xl) 0 var(--space-xl);
@@ -402,6 +359,10 @@ const currentYear = computed(() => new Date().getFullYear())
     padding: var(--space-xl) var(--space-lg);
   }
 
+  .contact-form-subtitle {
+    margin-bottom: var(--space-xl);
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -410,11 +371,6 @@ const currentYear = computed(() => new Date().getFullYear())
     flex-direction: column;
     gap: var(--space-lg);
     text-align: center;
-  }
-
-  .footer-bottom-links {
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
   .social-links {

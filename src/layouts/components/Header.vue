@@ -5,12 +5,11 @@ import { useDark } from '@vueuse/core'
 
 import BaseToggle from '@/common/components/BaseToggle.vue'
 import { useNavigation } from '@/common/composables/useNavigation'
-import LogoWhite from '@/assets/logowhite.svg'
-import LogoDark from '@/assets/logodark.svg'
+import LogoWhite from '@/assets/logos/logowhite.svg'
+import LogoDark from '@/assets/logos/logodark.svg'
 
 const ThemeIcon = computed<Component>(() => (isDark.value ? Moon : Sun));
 
-// Definición de tipos para las secciones
 type SectionName = 'inicio' | 'tecnologías' | 'experiencia' | 'footer';
 
 const sectionOrder: SectionName[] = ['inicio', 'tecnologías', 'experiencia', 'footer']
@@ -113,14 +112,14 @@ const handleLinkClick = (s: SectionName): void => {
   z-index: 1000;
   background: var(--gradient-header);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--stroke-weak);
-  border-radius: 20px;
+  border: 1px solid var(--border-weak);
+  border-radius: var(--radius-lg);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
 }
 
 
-/* --- LOGO (Restaurado a 5rem) --- */
+/* --- LOGO --- */
 .logo {
   display: flex;
   align-items: center;
@@ -143,11 +142,10 @@ const handleLinkClick = (s: SectionName): void => {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1.5rem;
-  min-height: 60px;
-  /* Asegura que el logo no estire el header */
+  min-height: 60px; 
 }
 
-/* --- 2. NAVEGACIÓN (DESKTOP) --- */
+/* --- NAVEGACIÓN (DESKTOP) --- */
 .nav-links {
   display: flex;
   list-style: none;
@@ -157,10 +155,11 @@ const handleLinkClick = (s: SectionName): void => {
 }
 
 .nav-link {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
   display: inline-block;
-  color: var(--text-strong-dark);
+  color: var(--text-primary);
   text-decoration: none;
-  font-weight: 500;
   padding: 0.5rem 0;
   position: relative;
   transition: color 0.4s ease;
@@ -170,7 +169,7 @@ const handleLinkClick = (s: SectionName): void => {
   text-transform: uppercase;
 }
 
-/* --- 3. ANIMACIÓN DE LÍNEA INTELIGENTE --- */
+/* --- ANIMACIÓN DE LÍNEA INTELIGENTE --- */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -185,8 +184,7 @@ const handleLinkClick = (s: SectionName): void => {
 }
 
 .nav-link--active::after {
-  transform: scaleX(1);
-  /* Se muestra cuando es activa */
+  transform: scaleX(1); /* Se muestra cuando es activa */
 }
 
 /* Lógica de direcciones */
@@ -208,7 +206,7 @@ const handleLinkClick = (s: SectionName): void => {
   transform-origin: left;
 }
 
-/* --- 4. CONTROL DE VISIBILIDAD (EL ARREGLO) --- */
+/* --- CONTROL DE VISIBILIDAD --- */
 
 /* Ocultar elementos de móvil en escritorio */
 .nav-item-mobile-only {
@@ -231,10 +229,8 @@ const handleLinkClick = (s: SectionName): void => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--overlay);
-  /* Color oscuro semi-transparente */
+  background: var(--overlay-base);
   backdrop-filter: blur(4px);
-  /* Opcional: desenfoque para más estilo */
   z-index: 999;
   /* Justo debajo del header (1000) */
   cursor: pointer;
@@ -253,11 +249,12 @@ const handleLinkClick = (s: SectionName): void => {
 
 
 
-/* --- 5. RESPONSIVE (MOBILE) --- */
+/* --- RESPONSIVE --- */
+
 @media (max-width: 768px) {
 
   .header {
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
   }
 
   /* Ocultar switch de escritorio */
@@ -270,7 +267,7 @@ const handleLinkClick = (s: SectionName): void => {
     display: block !important;
     width: 100%;
     padding-top: 1.7rem;
-    border-top: 1px solid var(--stroke-weak);
+    border-top: 1px solid var(--border-weak);
   }
 
   .mobile-menu-btn {
@@ -278,7 +275,7 @@ const handleLinkClick = (s: SectionName): void => {
   }
 
   .header--menu-open {
-    border-radius: 10px 10px 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 
   .nav-links {
@@ -288,26 +285,18 @@ const handleLinkClick = (s: SectionName): void => {
     right: -1px;
     flex-direction: column;
     padding: 2rem;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 
-    /* Aumentamos la opacidad del fondo para que las letras de atrás se mezclen más */
-    /* Usamos un color base sólido antes del gradiente para asegurar cobertura */
     background: var(--gradient-menu);
-
-    /* El punto dulce del blur suele ser entre 20px y 40px con saturación */
     backdrop-filter: blur(30px) saturate(150%);
     -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border: 1px solid var(--border-weak);
+    box-shadow:var(--shadow-sm);
 
-    border: 1px solid var(--stroke-weak);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    /* Sombra más fuerte para dar profundidad */
-
-    /* Animación y control */
     z-index: 1001;
     visibility: hidden;
     opacity: 0;
     transform: translateY(-10px);
-    /* Ligero desplazamiento para la animación */
     transform-origin: top right;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
@@ -331,12 +320,11 @@ const handleLinkClick = (s: SectionName): void => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--text-strong-dark);
+    color: var(--text-primary);
   }
 
   .nav-link {
     width: 100%;
-    font-size: 1.1rem;
   }
 
   .nav-link::after {

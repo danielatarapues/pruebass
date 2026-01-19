@@ -31,12 +31,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import GradientIcon from "@/components/GradientIcon.vue"
+import GradientIcon from "@/components/ui/GradientIcon.vue"
 import { TECHNOLOGIES_LIST } from "@/constants/technologies"
 
 const technologies = TECHNOLOGIES_LIST
 
-// 1. Tipamos la referencia del carrusel
+// Tipamos la referencia del carrusel
 const carouselTrack = ref<HTMLDivElement | null>(null)
 
 
@@ -54,7 +54,7 @@ const resumeCarousel = () => {
 <style scoped>
 .tech-stack {
   padding: var(--space-4xl) 0;
-  background: var(--primary-bg);
+  background: var(--bg-primary);
   overflow: hidden;
   position: relative;
 }
@@ -74,16 +74,15 @@ const resumeCarousel = () => {
   display: flex;
   gap: var(--space-xl);
   width: max-content;
-  animation: scroll-infinite 40s linear infinite;
+  animation: scroll-infinite 90s linear infinite;
   padding: var(--space-lg);
 }
 
-/* Tarjeta Refinada y Futurista */
+/* Tarjeta */
 .tech-card {
   position: relative;
   width: 280px;
   height: 350px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,16 +92,16 @@ const resumeCarousel = () => {
 
   /* Glassmorphism sutil */
   background: var(--fill-glass);
-  border: 1px solid var(--stroke-weak);
-  border-radius: var(--border-radius-xl);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--radius-xl);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
   /* Transición más suave y profesional */
   transition:
-    transform var(--transition-normal),
-    border-color var(--transition-normal),
-    box-shadow var(--transition-normal);
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
   user-select: none;
   overflow: hidden;
 }
@@ -113,74 +112,62 @@ const resumeCarousel = () => {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center,
-      var(--floating-element-bg) 0%,
+      var(--hero-float-bg) 0%,
       transparent 70%);
   opacity: 0;
-  transition: opacity var(--transition-normal);
+  transition: opacity var(--transition-base);
   z-index: 0;
 }
 
-/* Hover más sutil y elegante */
 .tech-card:hover {
   transform: translateY(-8px);
-  /* Elevación reducida */
-  border-color: var(--accent-purple);
-  /* Sombra más difusa y menos oscura */
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.3),
-    0 0 15px rgba(99, 102, 241, 0.1);
+  border-color: var(--color-accent-purple);
+  box-shadow: var(--shadow-lg)
 }
 
+/* Resplandor tenue */
 .tech-card:hover::before {
   opacity: 0.6;
-  /* Resplandor tenue */
+
 }
 
 /* Estilo del Badge de Categoría */
 .tech-category {
   position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
-  font-size: 10px;
-  font-weight: 800;
+  top: var(--space-base);
+  right: var(--space-base);
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-extrabold);
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: var(--fill-weak);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-xl);
+  background: rgba(219, 225, 255, 0.116);
   color: var(--fill-brand-strong);
-  border: 1px solid var(--stroke-weak);
+  border: 1px solid var(--border-weak);
   backdrop-filter: blur(4px);
 }
 
 /* Ajuste sutil en la tarjeta para dar espacio al badge */
 .tech-card {
   padding-top: var(--space-2xl);
-  /* Más espacio superior */
-}
-
-/* Diferenciación visual opcional por categoría */
-.tech-card:has([category="Design"]) {
-  border-bottom: 2px solid #F24E1E;
-  /* Color Figma */
 }
 
 .tech-icon {
   position: relative;
   z-index: 1;
   width: 70px;
-  /* Tamaño ligeramente más refinado */
   height: 70px;
   margin-bottom: var(--space-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 0 8px rgba(172, 167, 255, 0.2));
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-base);
 }
 
 .tech-card:hover .tech-icon {
   transform: scale(1.05);
-  /* Escala mínima */
 }
 
 .tech-content {
@@ -190,20 +177,20 @@ const resumeCarousel = () => {
 
 .tech-name {
   font-size: var(--font-size-xl);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--text-strong);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-2xs);
   letter-spacing: -0.01em;
 }
 
 .tech-description {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   color: var(--text-secondary);
   line-height: 1.6;
-  padding: 0 var(--space-xs);
+  padding: 0 var(--space-2xs);
 }
 
-/* Difuminados Laterales Premium */
+/* Difuminados Laterales */
 .fade-edge {
   position: absolute;
   top: 0;
@@ -215,12 +202,12 @@ const resumeCarousel = () => {
 
 .fade-edge.left {
   left: 0;
-  background: linear-gradient(to right, var(--primary-bg) 0%, transparent 100%);
+  background: linear-gradient(to right, var(--bg-primary) 0%, transparent 100%);
 }
 
 .fade-edge.right {
   right: 0;
-  background: linear-gradient(to left, var(--primary-bg) 0%, transparent 100%);
+  background: linear-gradient(to left, var(--bg-primary) 0%, transparent 100%);
 }
 
 /* Animación de Carrusel */

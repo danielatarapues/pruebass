@@ -36,7 +36,10 @@
 import { ref } from 'vue';
 
 defineProps<{ loading: boolean }>();
-const emit = defineEmits(['submit']);
+
+const emit = defineEmits<{
+    (e: 'submit', form: { name: string; email: string; subject: string; message: string }): void
+}>();
 
 const form = ref({
     name: '',
@@ -86,13 +89,13 @@ defineExpose({ resetForm });
 
 .form-input,
 .form-textarea {
-    background: var(--primary-bg);
+    background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-sm);
     padding: 0.75rem 1rem;
     color: var(--text-primary);
     font-family: inherit;
-    transition: all var(--transition-normal);
+    transition: all var(--transition-base);
 }
 
 .form-input:focus,

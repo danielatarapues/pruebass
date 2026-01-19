@@ -18,12 +18,12 @@ defineProps({
   display: inline-flex;
   background: var(--gradient-icons);
   padding: 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
 }
 
 .icon-shape {
   width: 24px;
   height: 24px;
-  color: var(--border-color);
+  color: var(--border-base);
 }
 </style>
