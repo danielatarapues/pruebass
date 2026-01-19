@@ -15,7 +15,6 @@ import ExperienceTimeline from './sections/ExperienceTimeline.vue'
 
 <style>
 /* Imports de estilos globales */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
 @import './styles/variables.css';
 @import './styles/global.css';
 </style>

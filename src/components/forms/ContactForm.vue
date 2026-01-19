@@ -90,7 +90,7 @@ defineExpose({ resetForm });
 .form-input,
 .form-textarea {
     background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-base);
     border-radius: var(--radius-sm);
     padding: 0.75rem 1rem;
     color: var(--text-primary);

@@ -59,7 +59,7 @@ const handleLinkClick = (s: SectionName): void => {
     <nav class="nav">
       <div class="container nav-content">
         <div class="logo">
-          <img :src="isDark ? LogoWhite : LogoDark" class="logo-image" alt="Logo" />
+          <img :src="isDark ? LogoWhite : LogoDark" class="logo-image" alt="D-Kit Portfolio Logo" />
         </div>
 
         <ul class="nav-links" :class="[{ 'nav-links--open': isMenuOpen }, scrollClass]">

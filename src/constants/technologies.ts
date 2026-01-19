@@ -8,8 +8,6 @@ import type { Technology } from "@/common/types"
 export const TECHNOLOGIES_LIST: Technology[] = [
   { name: "React", category: "Frontend", description: "Interfaces interactivas.", icon: PhAtom },
   { name: "Next.js", category: "Frontend", description: "Framework SSR y estático.", icon: PhAppWindow },
-  { name: "React", category: "Frontend", description: "Interfaces interactivas.", icon: PhAtom },
-  { name: "Next.js", category: "Frontend", description: "Framework SSR y estático.", icon: PhAppWindow },
   { name: "Angular", category: "Frontend", description: "Aplicaciones escalables.", icon: PhAngularLogo },
   { name: "Vue.js", category: "Frontend", description: "Framework progresivo.", icon: PhFileVue },
   { name: "Tailwind CSS", category: "Frontend", description: "Estilizado moderno.", icon: PhPaintBrushBroad },
