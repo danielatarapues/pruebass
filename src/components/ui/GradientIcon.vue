@@ -5,8 +5,10 @@
 </template>
 
 <script setup lang="ts">
-  import type { Component } from 'vue'
-  defineProps<{ icon: Component }>()
+ const props = defineProps<{
+  icon: object | string;
+  size?: string;
+}>();
 </script>
 
 <style scoped>
