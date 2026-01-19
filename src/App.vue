@@ -6,21 +6,11 @@
   </MainLayout>
 </template>
 
-<script>
+<script setup>
 import MainLayout from './layouts/MainLayout.vue'
 import HeroSection from './sections/HeroSection.vue'
 import TechStack from './sections/TechStack.vue'
 import ExperienceTimeline from './sections/ExperienceTimeline.vue'
-
-export default {
-  name: 'App',
-  components: {
-    MainLayout,
-    HeroSection,
-    TechStack,
-    ExperienceTimeline
-  }
-}
 </script>
 
 <style>
