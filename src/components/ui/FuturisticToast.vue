@@ -68,6 +68,7 @@ const config = computed(() => {
 // Auto-cierre
 watch(() => props.modelValue, (newVal) => {
     if (newVal && props.duration > 0) {
+        // eslint-disable-next-line no-undef
         setTimeout(() => {
             emit('update:modelValue', false);
         }, props.duration);
@@ -97,12 +98,11 @@ watch(() => props.modelValue, (newVal) => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     width: 380px;
     max-width: 90vw;
     z-index: 9999;
     display: flex;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-base);
     border: 1px solid var(--border-weak);
     overflow: hidden;
     box-shadow: var(--shadow-xl);
@@ -135,11 +135,11 @@ watch(() => props.modelValue, (newVal) => {
 }
 
 .success .toast-icon-wrapper {
-    color: var(--success-icon);
+    color: var(--color-success);
 }
 
 .error .toast-icon-wrapper {
-    color: var(--error-color);
+    color: var(--color-error);
 }
 
 .toast-body {
@@ -180,8 +180,8 @@ watch(() => props.modelValue, (newVal) => {
 }
 
 .action-link:hover {
-    background: var(--fill-brand-strong);
-    border-color: var(--fill-brand-strong);
+    background: var(--fill-brand);
+    border-color: var(--fill-brand);
     color: var(--text-inverse);
     transform: translateY(-2px);
 }
