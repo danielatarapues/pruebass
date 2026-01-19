@@ -122,9 +122,9 @@ watch(() => props.modelValue, (newVal) => {
 }
 
 .toast-content {
-    padding: 1.25rem;
+    padding: var(--space-lg);
     display: flex;
-    gap: 1rem;
+    gap: var(--space-base);
     width: 100%;
 }
 
@@ -150,7 +150,7 @@ watch(() => props.modelValue, (newVal) => {
     color: var(--text-primary);
     font-weight: 700;
     font-size: var(--font-size-base);
-    margin-bottom: 0.25rem;
+    margin-bottom: var(--space-2xs);
 }
 
 .toast-message {
@@ -161,13 +161,13 @@ watch(() => props.modelValue, (newVal) => {
 
 .toast-actions {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: var(--space-xs);
+    margin-top: var(--space-base);
 }
 
 .action-link {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
     background: var(--fill-brand-inverse);
     border: 1px solid var(--border-base);
     border-radius: var(--radius-lg);
@@ -175,7 +175,7 @@ watch(() => props.modelValue, (newVal) => {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: var(--space-xs);
     transition: all 0.3s ease;
 }
 
@@ -191,7 +191,7 @@ watch(() => props.modelValue, (newVal) => {
     border: none;
     color: var(--text-muted);
     cursor: pointer;
-    padding: 0.25rem;
+    padding:  var(--space-2xs);
     height: fit-content;
     transition: color 0.2s;
 }

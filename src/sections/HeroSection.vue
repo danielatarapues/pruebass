@@ -63,18 +63,23 @@
   import cv from '@/assets/CV_Tarapues_Daniela.pdf'
   const cvUrl = cv
   const openCV = () => {
+    // eslint-disable-next-line no-undef
     window.open(cvUrl, '_blank')
   }
 
   const downloadCV = () => {
+    // eslint-disable-next-line no-undef
     const link = document.createElement('a')
     link.href = cvUrl
     link.download = 'CV_Tarapues_Daniela.pdf'
+    // eslint-disable-next-line no-undef
     document.body.appendChild(link)
     link.click()
+    // eslint-disable-next-line no-undef
     document.body.removeChild(link)
   }
   const goTo = (url: string) => {
+    // eslint-disable-next-line no-undef
     window.open(url, '_blank')
   }
 </script>
@@ -85,7 +90,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    padding-top: 80px;
+    padding-top: var(--space-4xl);
     background: var(--bg-hero);
     padding: var(--space-4xl) 0;
     overflow: hidden;
@@ -95,7 +100,7 @@
   .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: var(--space-3xl);
     align-items: center;
   }
 
@@ -147,7 +152,7 @@
   }
 
   .hero-text {
-    padding-top: 3rem;
+    padding-top: var(--space-2xl);
     animation: fadeInUp 0.8s ease-out;
   }
 
@@ -178,12 +183,12 @@
     color: var(--text-strong);
     margin-bottom: var(--space-2xl);
     line-height: 1.7;
-    margin-top: 1rem;
+    margin-top: var(--space-base);
   }
 
   .hero-actions {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-base);
     align-items: center;
   }
 
@@ -210,7 +215,7 @@
   .btn-cv-icon {
     background: transparent;
     color: var(--text-primary);
-    padding: 1rem 1.25rem;
+    padding: var(--space-base) var(--space-lg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,7 +225,7 @@
   }
 
   .btn-cv-main {
-    padding-right: 1.4rem;
+    padding-right: var(--space-lg);
     border-right: 1px solid var(--border-base);
     border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   }
@@ -267,7 +272,7 @@
   @media (max-width: 768px) {
     /* Forzamos que la sección principal permita bloques independientes */
     .hero {
-      padding-top: 80px;
+      padding-top: var(--space-4xl);
       height: auto;
       min-height: 100vh;
     }
@@ -308,7 +313,7 @@
       margin-right: auto;
       font-size: var(--font-size-base);
       line-height: 1.5;
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-xl);
     }
 
     /* Botones */
@@ -316,7 +321,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start !important;
-      gap: 12px;
+      gap: var(--space-sm);
       width: 65%;
       /* Misma anchura que la descripción */
     }
@@ -337,7 +342,7 @@
 
     .btn-cv-main,
     .btn-cv-icon {
-      padding: 0.625rem 1.25rem;
+      padding: var(--space-sm) var(--space-base);
     }
 
     /* --- Robot a la derecha --- */
@@ -415,7 +420,7 @@
 
     .hero-description {
       width: 65%;
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-xl);
     }
 
     /* Botones */
@@ -423,7 +428,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      gap: 15px;
+      gap: var(--space-base);
       align-items: stretch !important;
       pointer-events: auto;
     }

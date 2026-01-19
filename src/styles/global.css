@@ -83,8 +83,8 @@ body::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
+  gap: var(--space-xs);
+  padding: var(--space-base) var(--space-lg);
   border-radius: var(--radius-sm);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
@@ -253,11 +253,11 @@ body::before {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 var(--space-base);
   }
 
   .btn {
-    padding: 0.625rem 1.25rem;
+    padding: var(--space-sm) var(--space-base);
     font-size: var(--font-size-sm);
   }
 }
@@ -277,5 +277,5 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-blue);
+  background: var(--color-accent-blue);
 }

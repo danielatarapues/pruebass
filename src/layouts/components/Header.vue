@@ -114,7 +114,7 @@ const handleLinkClick = (s: SectionName): void => {
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-weak);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-lg);
   transition: all 0.3s ease;
 }
 
@@ -126,7 +126,7 @@ const handleLinkClick = (s: SectionName): void => {
 }
 
 .logo-image {
-  width: 5.4rem;
+  width: var(--space-4xl);
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -141,7 +141,7 @@ const handleLinkClick = (s: SectionName): void => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1.5rem;
+  padding: var(--space-xs) var(--space-lg);
   min-height: 60px; 
 }
 
@@ -149,7 +149,7 @@ const handleLinkClick = (s: SectionName): void => {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: var(--space-xl);
   margin: 0;
   padding: 0;
 }
@@ -160,7 +160,7 @@ const handleLinkClick = (s: SectionName): void => {
   display: inline-block;
   color: var(--text-primary);
   text-decoration: none;
-  padding: 0.5rem 0;
+  padding: var(--space-xs) 0;
   position: relative;
   transition: color 0.4s ease;
 }
@@ -266,7 +266,7 @@ const handleLinkClick = (s: SectionName): void => {
   .nav-item-mobile-only {
     display: block !important;
     width: 100%;
-    padding-top: 1.7rem;
+    padding-top: var(--space-sm);
     border-top: 1px solid var(--border-weak);
   }
 
@@ -275,7 +275,7 @@ const handleLinkClick = (s: SectionName): void => {
   }
 
   .header--menu-open {
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
 
   .nav-links {
@@ -284,7 +284,7 @@ const handleLinkClick = (s: SectionName): void => {
     left: -1px;
     right: -1px;
     flex-direction: column;
-    padding: 2rem;
+    padding: var(--space-xl);
     border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 
     background: var(--gradient-menu);

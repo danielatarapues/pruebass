@@ -152,7 +152,7 @@ const currentYear = computed(() => new Date().getFullYear())
   border-top: 1px solid var(--border-base);
   position: relative;
   overflow: hidden;
-  padding-bottom: 0.6rem;
+  padding-bottom: var(--space-sm);
 }
 
 .footer-content {
@@ -178,7 +178,7 @@ const currentYear = computed(() => new Date().getFullYear())
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-xs);
   margin-bottom: var(--space-base);
 }
 
@@ -190,12 +190,12 @@ const currentYear = computed(() => new Date().getFullYear())
 
 .social-links {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-base);
 }
 
 .social-link {
-  width: 44px;
-  height: 44px;
+  width: var(--space-2xl);
+  height: var(--space-2xl);
   background: var(--bg-card);
   border: 1px solid var(--border-base);
   border-radius: var(--radius-sm);
@@ -210,13 +210,13 @@ const currentYear = computed(() => new Date().getFullYear())
 .social-link:hover {
   background: var(--color-accent-purple);
   border-color: var(--color-accent-purple);
-  color: white;
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
 .social-link svg {
-  width: 20px;
-  height: 20px;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
 }
 
 .footer-links {
@@ -227,7 +227,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
 .link-group-title {
   font-size: var(--font-size-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
   margin-bottom: var(--space-lg);
 }
@@ -238,7 +238,7 @@ const currentYear = computed(() => new Date().getFullYear())
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-sm);
 }
 
 .footer-link {
@@ -255,14 +255,14 @@ const currentYear = computed(() => new Date().getFullYear())
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-xs);
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
 }
 
 .contact-item svg {
-  width: 16px;
-  height: 16px;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
   flex-shrink: 0;
 }
 
@@ -276,7 +276,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
 .contact-form-title {
   font-size: var(--font-size-2xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
   margin-bottom: var(--space-2xs);
 }
@@ -307,22 +307,22 @@ const currentYear = computed(() => new Date().getFullYear())
 .footer-tech-stack {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-sm);
   font-size: var(--font-size-sm);
   color: var(--text-muted);
 }
 
 .tech-icons {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-xs);
 }
 
 .tech-tag {
   background: var(--bg-primary);
   border: 1px solid var(--border-base);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-xs);
+  font-size: var(--font-size-xs);
   color: var(--text-secondary);
   transition: all 0.3s ease;
 }
@@ -388,7 +388,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
   .footer-bottom-content {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-base);
     text-align: center;
   }
 

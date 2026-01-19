@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+ // eslint-disable-next-line @typescript-eslint/no-unused-vars
  const props = defineProps<{
   icon: object | string;
   size?: string;
@@ -15,13 +16,13 @@
   .gradient-icon {
     display: inline-flex;
     background: var(--gradient-icons);
-    padding: 10px;
+    padding: var(--space-sm);
     border-radius: var(--radius-sm);
   }
 
   .icon-shape {
-    width: 24px;
-    height: 24px;
+    width: var(--icon-size-base);
+    height: var(--icon-size-base);
     color: var(--border-base);
   }
 </style>

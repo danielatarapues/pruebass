@@ -37,6 +37,7 @@ import { TECHNOLOGIES_LIST } from "@/constants/technologies"
 const technologies = TECHNOLOGIES_LIST
 
 // Tipamos la referencia del carrusel
+// eslint-disable-next-line no-undef
 const carouselTrack = ref<HTMLDivElement | null>(null)
 
 
@@ -93,7 +94,7 @@ const resumeCarousel = () => {
   /* Glassmorphism sutil */
   background: var(--fill-glass);
   border: 1px solid var(--border-weak);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-base);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 

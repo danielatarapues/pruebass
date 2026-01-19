@@ -78,7 +78,7 @@ defineExpose({ resetForm });
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-xs);
 }
 
 .form-label {
@@ -92,7 +92,7 @@ defineExpose({ resetForm });
     background: var(--bg-primary);
     border: 1px solid var(--border-base);
     border-radius: var(--radius-sm);
-    padding: 0.75rem 1rem;
+    padding: var(--space-sm) var(--space-base);
     color: var(--text-primary);
     font-family: inherit;
     transition: all var(--transition-base);
@@ -119,7 +119,7 @@ defineExpose({ resetForm });
     align-self: flex-start;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     min-width: 160px;
     justify-content: center;
 }
