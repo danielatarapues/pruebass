@@ -38,12 +38,13 @@
   --space-5xl: 6rem;
 
   /* Icon Sizes */
-  --icon-size-xs: 0.75rem;  /* 12px - Para labels muy pequeñas */
-  --icon-size-sm: 1rem;     /* 16px - Tamaño estándar para botones pequeños */
-  --icon-size-md: 1.25rem;  /* 20px - Tamaño ideal para inputs y listas */
+  --icon-size-xs: 0.75rem; /* 12px - Para labels muy pequeñas */
+  --icon-size-sm: 1rem; /* 16px - Tamaño estándar para botones pequeños */
+  --icon-size-md: 1.25rem; /* 20px - Tamaño ideal para inputs y listas */
   --icon-size-base: 1.5rem; /* 24px - El estándar "por defecto" */
-  --icon-size-lg: 2rem;     /* 32px - Para destacados o secciones hero */
-  --icon-size-xl: 2.5rem;   /* 40px - Para ilustraciones */
+  --icon-size-lg: 2rem; /* 32px - Para destacados o secciones hero */
+  --icon-size-xl: 2.5rem; /* 40px - Para ilustraciones */
+  --icon-size-2xl: 3rem; /* 48px - Tamaño grande para énfasis */
 
   /* Layout */
   --container-max-width: 75rem;
@@ -85,7 +86,7 @@
   --overlay-base: rgba(0, 0, 0, 0.5);
   --overlay-inverse: rgba(255, 255, 255, 0.6);
 
-  /* Accent colors */
+   /* Accent colors */
   --color-accent-purple: #6366f1;
   --color-accent-blue: #3b82f6;
 
@@ -116,6 +117,10 @@
   );
   --gradient-text: linear-gradient(90deg, #aca7ff 72.47%, #7172e3 88.82%);
   --gradient-icons: linear-gradient(90deg, #814acf 0%, #aca7ff 100%);
+
+  /* Custom Icons SVG Colors */
+  --gradient-custom-icon-primary: #aca7ff;
+  --gradient-custom-icon-secondary: #814acf;
 
   /* Brand / fills */
   --fill-strong: #dbe1ff;
@@ -191,11 +196,15 @@
   --gradient-text: linear-gradient(90deg, #19217b 71.78%, #3a35d0 88.75%);
   --gradient-icons: linear-gradient(90deg, #2a1ab5 0%, #6228ff 100%);
 
+    /* Custom Icons SVG Colors */
+  --gradient-custom-icon-primary: #4338ca;
+  --gradient-custom-icon-secondary: #1d4ed8;
+
   /* Brand / fills */
   --fill-strong: #1e1a91;
   --fill-strong-inverse: #dbe1ff;
   --fill-weak: rgba(0, 0, 0, 0.05);
-  --fill-brand: #2a1ab5;
+  --fill-brand: #1f1299;
   --fill-brand-inverse: #aca7ff;
   --fill-glass: rgba(215, 215, 255, 0.4);
   --fill-transparent: rgba(255, 255, 255, 0.4);

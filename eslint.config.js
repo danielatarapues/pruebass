@@ -11,7 +11,7 @@ export default ts.config(
   ...ts.configs.recommended,
   
   // Configuración de Vue 3
-  ...pluginVue.configs['flat/essential'], // Puedes usar 'flat/recommended' para reglas más estrictas
+  ...pluginVue.configs['flat/essential'], // 'flat/recommended' para reglas más estrictas
   
   {
     files: ['*.vue', '**/*.vue'],

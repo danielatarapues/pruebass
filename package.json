@@ -11,11 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hugeicons/core-free-icons": "^2.0.0",
-    "@hugeicons/vue": "^1.0.3",
-    "@phosphor-icons/vue": "^2.2.1",
     "@vueuse/core": "^14.1.0",
-    "lucide-vue-next": "^0.545.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.8",
     "vue": "^3.5.18"

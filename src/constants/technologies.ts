@@ -1,20 +1,16 @@
-import { 
-  PhAngularLogo, PhAtom, PhGithubLogo, PhGlobeSimple,
-  PhFileVue, PhFigmaLogo, PhDeviceMobile, PhAppWindow,
-  PhCode, PhMagicWand, PhPaintBrushBroad 
-} from "@phosphor-icons/vue"
 import type { Technology } from "@/common/types"
 
+
 export const TECHNOLOGIES_LIST: Technology[] = [
-  { name: "React", category: "Frontend", description: "Interfaces interactivas.", icon: PhAtom },
-  { name: "Next.js", category: "Frontend", description: "Framework SSR y estático.", icon: PhAppWindow },
-  { name: "Angular", category: "Frontend", description: "Aplicaciones escalables.", icon: PhAngularLogo },
-  { name: "Vue.js", category: "Frontend", description: "Framework progresivo.", icon: PhFileVue },
-  { name: "Tailwind CSS", category: "Frontend", description: "Estilizado moderno.", icon: PhPaintBrushBroad },
-  { name: "React Native", category: "Mobile", description: "Apps nativas iOS/Android.", icon: PhDeviceMobile },
-  { name: "Figma", category: "Design", description: "Prototipado y sistemas de diseño.", icon: PhFigmaLogo },
-  { name: "AI Integration", category: "Backend & AI", description: "OpenAI API", icon: PhMagicWand },
-  { name: "Python & SQL", category: "Backend & AI", description: "Lógica y manejo de datos.", icon: PhCode },
-  { name: "WordPress", category: "Tools", description: "Gestión de contenidos.", icon: PhGlobeSimple },
-  { name: "GitHub", category: "Tools", description: "Control de versiones Git.", icon: PhGithubLogo }
+  { name: "React", category: "Frontend", description: "Interfaces interactivas.", icon: "custom-react" },
+  { name: "Next.js", category: "Frontend", description: "Framework SSR y estático.", icon: "pi pi-desktop" },
+  { name: "Angular", category: "Frontend", description: "Aplicaciones escalables.", icon: "pi pi-prime" },
+  { name: "Vue.js", category: "Frontend", description: "Framework progresivo.", icon: "pi pi-bolt" },
+  { name: "Tailwind CSS", category: "Frontend", description: "Estilizado moderno.", icon: "pi pi-palette" },
+  { name: "React Native", category: "Mobile", description: "Apps nativas iOS/Android.", icon: "pi pi-mobile" },
+  { name: "Figma", category: "Design", description: "Prototipado y sistemas de diseño.", icon: "pi pi-pencil" },
+  { name: "AI Integration", category: "Backend & AI", description: "OpenAI API", icon: "pi pi-sparkles" },
+  { name: "Python & SQL", category: "Backend & AI", description: "Lógica y manejo de datos.", icon: "pi pi-database" },
+  { name: "WordPress", category: "Tools", description: "Gestión de contenidos.", icon: "pi pi-globe" },
+  { name: "GitHub", category: "Tools", description: "Control de versiones Git.", icon: "pi pi-github" }
 ]

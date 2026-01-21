@@ -1,11 +1,15 @@
 <template>
   <section id="inicio" class="hero">
     <div class="hero-bg-iframe">
+      <RobotSkeleton v-if="!isRobotLoaded" />
+
       <iframe
         src="https://my.spline.design/greetingrobot-JhV02AkIg618aoeLduac4lQc/"
         frameborder="0"
         loading="lazy"
         title="Robot 3D Interactivo"
+        :class="{ 'is-visible': isRobotLoaded }"
+        @load="handleRobotLoad"
       ></iframe>
     </div>
 
@@ -33,19 +37,25 @@
             <button
               @click="goTo('https://calendly.com/daniela-tarapues232/30min')"
               class="btn btn-primary"
+              aria-label="Agendar Cita en Calendly"
             >
               <span>Agendar Cita</span>
               <i class="pi pi-calendar"></i>
             </button>
 
             <div class="cv-wrapper">
-              <button @click="openCV" class="btn btn-cv-main">
+              <button
+                @click="openCV"
+                class="btn btn-cv-main"
+                aria-label="Abrir currículum en una nueva pestaña"
+              >
                 <span>Ver CV</span>
               </button>
               <button
                 @click="downloadCV"
                 class="btn btn-cv-icon"
                 title="Descargar PDF"
+                aria-label="Descargar currículum en formato PDF"
               >
                 <i class="pi pi-download"></i>
               </button>
@@ -54,33 +64,51 @@
         </div>
       </div>
     </div>
-
-    <div class="hero-bg-decoration"></div>
   </section>
 </template>
 
 <script setup lang="ts">
+  import { ref, onMounted } from 'vue'
+  import RobotSkeleton from '@/components/ui/RobotSkeleton.vue'
   import cv from '@/assets/CV_Tarapues_Daniela.pdf'
-  const cvUrl = cv
-  const openCV = () => {
-    // eslint-disable-next-line no-undef
-    window.open(cvUrl, '_blank')
+
+  const isRobotLoaded = ref(false)
+
+  const handleRobotLoad = () => {
+    isRobotLoaded.value = true
   }
 
-  const downloadCV = () => {
+  onMounted(() => {
+    // Respaldo de seguridad por si Spline tarda mucho
+    if (typeof window !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      window.setTimeout(() => {
+        isRobotLoaded.value = true
+      }, 5000)
+    }
+  })
+
+  const goTo = (url: string) => {
+    if (typeof window !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      window.open(url, '_blank')
+    }
+  }
+  const openCV = (): void => {
+    // eslint-disable-next-line no-undef
+    window.open(cv, '_blank')
+  }
+
+  const downloadCV = (): void => {
     // eslint-disable-next-line no-undef
     const link = document.createElement('a')
-    link.href = cvUrl
+    link.href = cv
     link.download = 'CV_Tarapues_Daniela.pdf'
     // eslint-disable-next-line no-undef
     document.body.appendChild(link)
     link.click()
     // eslint-disable-next-line no-undef
     document.body.removeChild(link)
-  }
-  const goTo = (url: string) => {
-    // eslint-disable-next-line no-undef
-    window.open(url, '_blank')
   }
 </script>
 
@@ -102,6 +130,15 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-3xl);
     align-items: center;
+  }
+
+  iframe {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+  }
+
+  iframe.is-visible {
+    opacity: 1;
   }
 
   /* Capa del Robot (Fondo) */
@@ -200,8 +237,7 @@
     border-radius: var(--radius-sm);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    padding: 0;
-    /* Asegurar que no haya padding interno que afecte a los botones */
+    padding: 0; /* Asegurar que no haya padding interno que afecte a los botones */
     overflow: hidden;
   }
 
